@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "ls -a"
+ls -a -P
