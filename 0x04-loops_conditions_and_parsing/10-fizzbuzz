@@ -1,21 +1,19 @@
 #!/usr/bin/env bash
 # displays numbers from 1 to 100.
 
-counter=1
-while [ $counter -lt 101 ]
+for num in {1..100}
 do
-    if [ $((counter%15)) = 0 ]
-    then
-        echo "FizzBuzz"
-    elif [ $((counter%3)) = 0 ]
-    then
-        echo "Fizz"
-    elif [ $((counter%5)) = 0 ]
-    then
-        echo "Buzz"
-    else
-        echo "$counter"
-    fi
-    let counter+=1
+  if (( num % 3 == 0 && num % 5 == 0 ))
+  then
+    echo "FizzBuzz"
+  elif (( num % 3 == 0 ))
+  then
+    echo "Fizz"
+  elif (( num % 5 == 0 ))
+  then
+    echo "Buzz"
+  else
+    echo "$num"
+  fi
 done
 
