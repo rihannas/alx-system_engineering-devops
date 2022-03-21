@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# a Bash script that configures a new Ubuntu machine
+# Install and configure HAproxy on your lb-01 server.
+# Configure HAproxy with version equal or greater than 1.5 so that it send traffic to web-01 and web-02
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAproxy can be managed via an init script
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-1.8
+sudo apt-get -y update
+sudo apt-get -y install haproxy=1.8\*
+
+echo "
+frontend http
+ bind *:80
+ stats uri /haproxy?stats
+ default_backend web-backend
+backend web-backend
+balance roundrobin
+server 973-web-01 34.148.182.81 check
+server 973-web-02 3.235.177.10 check" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
