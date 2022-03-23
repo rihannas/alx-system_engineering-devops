@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# a bash script that listens on port 80 of all the server's active IPv4 IPs - with nginx running
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+pkill -1 nginx
