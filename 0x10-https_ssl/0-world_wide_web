@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# a Bash script that will display information about subdomains.
+# Add the subdomain www to your domain, point it to your lb-01 IP (your domain name might be configured with default subdomains, feel free to remove them)
+# Add the subdomain lb-01 to your domain, point it to your lb-01 IP
+# Add the subdomain web-01 to your domain, point it to your web-01 IP
+# Add the subdomain web-02 to your domain, point it to your web-02 IP
+if (( $# == 1 )); then
+    for subs in www lb-01 web-01 web-02; do
+    Name=$(dig "$subs.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')
+    IP=$(dig "$subs.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')
+    echo "The subdomain $subs is a $Name record and points to $IP"
+    done
+elif (( $# == 2 )); then
+    Name=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')
+    IP=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')
+    echo "The subdomain $2 is a $Name record and points to $IP"
+fi
