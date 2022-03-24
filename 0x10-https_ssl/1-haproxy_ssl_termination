@@ -34,19 +34,17 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend rihannacodes.tech-http-frontend
-      	bind	 *:80
-      	http-request set-header X-Forwarded-Proto http
-      	default_backend	 rihannacodes.tech-backend
+frontend www-http
+        bind :80
+        reqadd X-Forwarded-Proto:\ http
+        default_backend web-backend
 
+frontend www-https
+        bind :443 ssl crt /etc/haproxy/ssl/rihannacodes.tech.pem
+        reqadd X-Forwarded-Proto:\ https
+        default_backend web-backend
 
-frontend rihannacodes.tech-https-frontend
-      	bind *:443 ssl crt /etc/ssl/rihannacodes.tech.pem
-      	http-request set-header X-Forwarded-Proto https
-        default_backend rihannacodes.tech-backend
-
-
-backend rihannacodes.tech-backend
-        balance roundrobin
-        server 973-web-01 34.148.182.81 check
-        server 973-web-02 3.235.177.10 check
+backend web-backend
+        redirect scheme https if !{ ssl_fc }
+        server 973-web-01 34.148.182.81:80 check
+        server 973-web-02 3.235.177.10:80 check
