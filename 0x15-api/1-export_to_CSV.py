@@ -14,9 +14,11 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         userId = sys.argv[1]
         user = requests.get('{}/users/{}'.format(API, userId)).json()
-        userName = user.get('name')
+        userName = user.get('username')
         userTodo = requests.get('{}/todos'.format(API)).json()
-        with open('{}.csv'.format(userId), 'w') as f:
+
+        filename = userId + '.csv'
+        with open(filename, 'w') as f:
             writer = csv.writer(f, delimiter=',', quotechar='"',
                                 quoting=csv.QUOTE_ALL, lineterminator='\n')
             for task in userTodo:
