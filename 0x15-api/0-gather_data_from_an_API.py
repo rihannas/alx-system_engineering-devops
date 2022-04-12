@@ -8,9 +8,7 @@ if __name__ == "__main__":
     import requests
     import sys
 
-
     API = "https://jsonplaceholder.typicode.com"
-
 
     if len(sys.argv) > 1:
         userId = sys.argv[1]

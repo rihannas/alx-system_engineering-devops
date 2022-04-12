@@ -9,9 +9,7 @@ if __name__ == "__main__":
     import sys
     import csv
 
-
     API = "https://jsonplaceholder.typicode.com"
-
 
     if len(sys.argv) > 1:
         userId = sys.argv[1]
