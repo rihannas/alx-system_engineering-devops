@@ -21,6 +21,7 @@ if __name__ == "__main__":
         with open(filename, 'w') as f:
             writer = csv.writer(f, delimiter=',', quotechar='"',
                                 quoting=csv.QUOTE_ALL, lineterminator='\n')
-            for task in userTodo:
-                writer.writerow([userId, userName, str(task.get('completed')),
-                                 task.get('title')])
+            for task in userTodo
+                if task.get('userId') == int(userId):
+                    writer.writerow([userId, userName, str(task.get('completed')),
+                                     task.get('title')])
