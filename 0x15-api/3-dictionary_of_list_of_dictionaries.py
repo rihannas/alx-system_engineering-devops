@@ -10,7 +10,7 @@ if __name__ == "__main__":
     API = "https://jsonplaceholder.typicode.com"
 
     #userId = sys.argv[1]
-    users = requests.get('{}/users/'.format(API)).json()
+    users = requests.get('{}/users'.format(API)).json()
     userTodo = requests.get('{}/todos'.format(API)).json()
     userTodoData = {}
 
