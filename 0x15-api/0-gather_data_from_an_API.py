@@ -13,7 +13,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         userId = sys.argv[1]
         user = requests.get('{}/users/{}'.format(API, userId)).json()
-        userName = user.get('username')
+        userName = user.get('name')
         userTodo = requests.get('{}/todos'.format(API)).json()
         totalTasks = 0
         completed = 0
