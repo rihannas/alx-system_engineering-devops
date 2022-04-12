@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" a Python script that, using an API,
+""" a Python script that, uses an API,
 for a given employee ID,
-returns information about his/her TODO list progress.
+to export dara in CSV format.
 """
 if __name__ == "__main__":
 
@@ -14,8 +14,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         userId = sys.argv[1]
-        user = requests.get('{}/users/{}'.format(API, id)).json()
-        userName = user.get('name')
+        user = requests.get('{}/users/{}'.format(API, userId)).json()
+        userName = user.get('username')
         userTodo = requests.get('{}/todos'.format(API)).json()
         totalTasks = 0
         completed = 0
