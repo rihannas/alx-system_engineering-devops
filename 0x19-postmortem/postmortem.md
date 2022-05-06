@@ -11,7 +11,7 @@ the internal website used by the sales team to track customer interactions doesn
 processes are stuck waiting for the operating system to return from system calls.
 
 -----------------------------------
-### Timeline
+### Timeline:
 * when was the issue detected:
 
 	2:17 PM (GMT)
@@ -40,17 +40,16 @@ processes are stuck waiting for the operating system to return from system calls
 	3:07 PM (GMT) The website logged in and landing page is working.
 -----------------------------------------------
 
-* Root cause and resolution must contain:
-
-	The backup process was on the same server where the website is hosted, which used most of the cpu, so it's on waiting stage.
-	The issue was solved by killing the backup process in that server.
+### Root cause and resolution must contain:
+The backup process was on the same server where the website is hosted, which used most of the cpu, so it's on waiting stage.
+The issue was solved by killing the backup process in that server.
 
 -----------------------------------------------
 
-* Corrective and preventative measures must contain:
+### Corrective and preventative measures must contain:
 
-	Make sure that the backing up system should on a separate server so it wont overload and website stops working.
-	
-	To-do:
-	
-	 Create a backup process in different server.
+Make sure that the backing up system should on a separate server so it wont overload and website stops working.
+
+To-do:
+
+ Create a backup process in different server.
