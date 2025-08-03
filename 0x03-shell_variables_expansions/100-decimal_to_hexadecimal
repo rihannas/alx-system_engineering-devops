@@ -1,8 +1,2 @@
 #!/bin/bash
-if [ -n "$DECIMAL" ]; then
-    printf "%x\n" "$DECIMAL"
-fi
-
-for num in $DECIMAL; do
-    printf "%x\n" "$num"
-done
+printf "%x\n" $DECIMAL
