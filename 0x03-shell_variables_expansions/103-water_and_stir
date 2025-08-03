@@ -1,0 +1,2 @@
+#!/bin/bash
+python3 -c "W='$WATER';S='$STIR';WD='water';SD='stir';BD='bestchol';to_dec=lambda n,b:sum(b.index(c)*len(b)**i for i,c in enumerate(n[::-1]));from_dec=lambda x,b:(from_dec(x//len(b),b) if x>=len(b) else '')+b[x%len(b)] if x>0 else b[0];print(from_dec(to_dec(W,WD)+to_dec(S,SD),BD))"
