@@ -1,2 +1,2 @@
 #!/bin/bash
-sed -n '1~2p'
+awk 'NR % 2 == 1'
